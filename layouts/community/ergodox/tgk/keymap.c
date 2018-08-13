@@ -35,12 +35,15 @@ enum layers {
 };
 
 /* modifiers */
-#define OSM_LALT OSM(MOD_LALT)
-#define OSM_LCTL OSM(MOD_LCTL)
-#define OSM_LGUI OSM(MOD_LGUI)
+#define OSM_ALT OSM(MOD_LALT)
+#define OSM_CTL OSM(MOD_LCTL)
+#define OSM_GUI OSM(MOD_LGUI)
+#define OSM_SALT OSM(MOD_LALT | MOD_LSFT)
+#define OSM_SCTL OSM(MOD_LCTL | MOD_LSFT)
+#define OSM_SGUI OSM(MOD_LGUI | MOD_LSFT)
 
-/* compose key */
-#define X_COMP S(KC_RALT)
+/* map right alt to compose key in GNOME */
+#define X_COMP KC_RALT
 
 /* Ergodox geometry
  * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
@@ -93,15 +96,15 @@ KC_BSPC,    KC_QUOT,    KC_Q,       KC_J,       KC_K,       KC_X,       KC_NO,
 KC_NO,      KC_LEFT,    KC_RGHT,    KC_DOWN,    KC_UP,
                                                             KC_NO,      KC_NO,
                                                                         X_COMP,
-                                                OSL(LATU),  KC_SPC,     OSM_LALT,
+                                                OSL(LATU),  KC_SPC,     OSM_ALT,
 KC_F12,     KC_0,       KC_2,       KC_4,       KC_6,       KC_8,       KC_NO,
 KC_NO,      KC_F,       KC_G,       KC_C,       KC_R,       KC_L,       KC_NO,
             KC_D,       KC_H,       KC_T,       KC_N,       KC_S,       KC_ESC,
 KC_NO,      KC_B,       KC_M,       KC_W,       KC_V,       KC_Z,       KC_DEL,
                         KC_PGUP,    KC_PGDN,    KC_HOME,    KC_END,     KC_NO,
 KC_NO,      KC_NO,
-OSM_LGUI,
-OSM_LCTL,   KC_ENT,     OSL(SYMB)),
+OSM_GUI,
+OSM_CTL,   KC_ENT,     OSL(SYMB)),
 
 /* Latin uppercase
  * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
@@ -131,15 +134,15 @@ S(KC_BSPC), KC_DQT,     S(KC_Q),    S(KC_J),    S(KC_K),    S(KC_X),    KC_NO,
 KC_NO,      S(KC_LEFT), S(KC_RGHT), S(KC_DOWN), S(KC_UP),
                                                             KC_NO,      KC_NO,
                                                                         KC_NO,
-                                                KC_TRNS,    S(KC_SPC),  KC_NO,
+                                                KC_TRNS,    S(KC_SPC),  OSM_SALT,
 S(KC_F12),  S(KC_0),    S(KC_2),    S(KC_4),    S(KC_6),    S(KC_8),    KC_NO,
 KC_NO,      S(KC_F),    S(KC_G),    S(KC_C),    S(KC_R),    S(KC_L),    KC_NO,
             S(KC_D),    S(KC_H),    S(KC_T),    S(KC_N),    S(KC_S),    S(KC_ESC),
 KC_NO,      S(KC_B),    S(KC_M),    S(KC_W),    S(KC_V),    S(KC_Z),    S(KC_DEL),
                         S(KC_PGUP), S(KC_PGDN), S(KC_HOME), S(KC_END),  KC_NO,
 KC_NO,      KC_NO,
-KC_NO,
-KC_NO,      S(KC_ENT),  OSL(GRKU)),
+OSM_SGUI,
+OSM_SCTL,   S(KC_ENT),  OSL(GRKU)),
 
 /* symbols
  * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
