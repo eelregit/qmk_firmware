@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_CONFIG_H
 
-#define ONESHOT_TIMEOUT 1000
+#define ONESHOT_TIMEOUT 300
 #define ONESHOT_TAP_TOGGLE 2
 
 #endif
