@@ -16,22 +16,12 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// algernon
-// german-manuneo
-// coderkun_neo2 overriding
-//
-// slow ^{[(
-// compose key not working
-
 #include QMK_KEYBOARD_H
-#include "greek_unicode.h"
 
 enum layers {
     LATL = 0,
     LATU,
     SYMB,
-    GRKL,
-    GRKU,
 };
 
 /* modifiers */
@@ -142,7 +132,7 @@ KC_NO,      S(KC_B),    S(KC_M),    S(KC_W),    S(KC_V),    S(KC_Z),    S(KC_DEL
                         S(KC_PGUP), S(KC_PGDN), S(KC_HOME), S(KC_END),  KC_NO,
 KC_NO,      KC_NO,
 OSM_SGUI,
-OSM_SCTL,   S(KC_ENT),  OSL(GRKU)),
+OSM_SCTL,   S(KC_ENT),  KC_TRNS),
 
 /* symbols
  * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
@@ -172,90 +162,12 @@ KC_NO,      KC_GRV,     KC_QUES,    KC_AT,      KC_AMPR,    KC_NO,      KC_NO,
 KC_NO,      KC_MPRV,    KC_MNXT,    KC_VOLD,    KC_VOLU,
                                                             KC_NO,      KC_NO,
                                                                         KC_NO,
-                                                OSL(GRKL),  KC_MPLY,    KC_MSTP,
+                                                KC_TRNS,    KC_MPLY,    KC_MSTP,
 KC_F12,     KC_F10,     KC_F2,      KC_F4,      KC_F6,      KC_F8,      KC_NO,
 KC_NO,      KC_NO,      KC_PLUS,    KC_MINS,    KC_EQL,     KC_NO,      KC_NO,
             KC_RABK,    KC_RPRN,    KC_RBRC,    KC_RCBR,    KC_DLR,     KC_NO,
 KC_NO,      KC_NO,      KC_PIPE,    KC_HASH,    KC_EXLM,    KC_PERC,    KC_NO,
                         KC_WBAK,    KC_WFWD,    KC_NO,      KC_NO,      KC_NO,
-KC_NO,      KC_NO,
-KC_NO,
-KC_NO,      KC_NO,      KC_TRNS),
-
-/* Greek lowercase
- * https://en.wikipedia.org/wiki/Keyboard_layout#Greek
- * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
- * ┃     │    │    │    │    │    │    ┃    │    │    │    │    │    │     ┃
- * ┠─────┼────┼────┼────┼────┼────┼────╂────┼────┼────┼────┼────┼────┼─────┨
- * ┃     │    │    │    │ π  │ υ  │    ┃    │  ϕ │  γ │  ψ │  ρ │  λ │     ┃
- * ┠─────┼────┼────┼────┼────┼────┤    ┃    ├────┼────┼────┼────┼────┼─────┨
- * ┃     │ α  │ ο  │ ϵ  │ θ  │ ι  ├────╂────┤  δ │  η │  τ │  ν │  σ │     ┃
- * ┠─────┼────┼────┼────┼────┼────┤    ┃    ├────┼────┼────┼────┼────┼─────┨
- * ┃     │    │    │ ξ  │ κ  │ χ  │    ┃    │  β │  μ │    │  ω │  ζ │     ┃
- * ┗┱────┼────┼────┼────┼────╆━━━━┷━━━━┻━━━━┷━━━━╅────┼────┼────┼────┼────┲┛
- *  ┃    │    │    │    │    ┃                   ┃    │    │    │    │    ┃
- *  ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛                   ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛
- *                          ┏━━━━┯━━━━┓ ┏━━━━┯━━━━┓
- *                          ┃    │    ┃ ┃    │    ┃
- *                     ┏━━━━╃────┼────┨ ┠────┼────╄━━━━┓
- *                     ┃    │    │    ┃ ┃    │    │    ┃
- *                     ┃    │    ├────┨ ┠────┤    │    ┃
- *                     ┃    │    │    ┃ ┃    │    │    ┃
- *                     ┗━━━━┷━━━━┷━━━━┛ ┗━━━━┷━━━━┷━━━━┛
- */
-[GRKL] = LAYOUT_ergodox(
-KC_NO,      S(KC_F9),   S(KC_F7),   S(KC_F5),   S(KC_F3),   S(KC_F1),   S(KC_F11),
-KC_NO,      KC_NO,      KC_NO,      KC_NO,      GR_pi,      GR_upsl,    KC_NO,
-KC_NO,      GR_alph,    GR_omcr,    GR_epsl,    GR_tht,     GR_iota,
-KC_NO,      KC_NO,      KC_NO,      GR_xi,      GR_kapp,    GR_chi,     KC_NO,
-KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-                                                            KC_NO,      KC_NO,
-                                                                        KC_NO,
-                                                KC_TRNS,    KC_NO,      KC_NO,
-S(KC_F12),  S(KC_F10),  S(KC_F2),   S(KC_F4),   S(KC_F6),   S(KC_F8),   KC_NO,
-KC_NO,      GR_phi,     GR_gamm,    GR_psi,     GR_rho,     GR_lmbd,    KC_NO,
-            GR_dlt,     GR_eta,     GR_tau,     GR_nu,      GR_sgm,     KC_NO,
-KC_NO,      GR_beta,    GR_mu,      KC_NO,      GR_omg,     GR_zeta,    KC_NO,
-                        KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-KC_NO,      KC_NO,
-KC_NO,
-KC_NO,      KC_NO,      KC_NO),
-
-/* Greek uppercase
- * https://en.wikipedia.org/wiki/Keyboard_layout#Greek
- * ┏━━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┳━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━┯━━━━━┓
- * ┃     │F21 │F19 │F17 │F15 │F13 │F23 ┃ F24│ F22│ F14│ F16│ F18│ F20│     ┃
- * ┠─────┼────┼────┼────┼────┼────┼────╂────┼────┼────┼────┼────┼────┼─────┨
- * ┃     │    │    │    │ Π  │ Υ  │    ┃    │  Φ │  Γ │  Ψ │  Ρ │  Λ │     ┃
- * ┠─────┼────┼────┼────┼────┼────┤    ┃    ├────┼────┼────┼────┼────┼─────┨
- * ┃     │ Α  │ Ο  │ Ε  │ Θ  │ Ι  ├────╂────┤  Δ │  Η │  Τ │  Ν │  Σ │     ┃
- * ┠─────┼────┼────┼────┼────┼────┤    ┃    ├────┼────┼────┼────┼────┼─────┨
- * ┃     │    │    │ Ξ  │ Κ  │ Χ  │    ┃    │  Β │  Μ │    │  Ω │  Ζ │     ┃
- * ┗┱────┼────┼────┼────┼────╆━━━━┷━━━━┻━━━━┷━━━━╅────┼────┼────┼────┼────┲┛
- *  ┃    │    │    │    │    ┃                   ┃    │    │    │    │    ┃
- *  ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛                   ┗━━━━┷━━━━┷━━━━┷━━━━┷━━━━┛
- *                          ┏━━━━┯━━━━┓ ┏━━━━┯━━━━┓
- *                          ┃    │    ┃ ┃    │    ┃
- *                     ┏━━━━╃────┼────┨ ┠────┼────╄━━━━┓
- *                     ┃    │    │    ┃ ┃    │    │    ┃
- *                     ┃    │    ├────┨ ┠────┤    │    ┃
- *                     ┃    │    │    ┃ ┃    │    │    ┃
- *                     ┗━━━━┷━━━━┷━━━━┛ ┗━━━━┷━━━━┷━━━━┛
- */
-[GRKU] = LAYOUT_ergodox(
-KC_NO,      KC_F21,     KC_F19,     KC_F17,     KC_F15,     KC_F13,     KC_F23,
-KC_NO,      KC_NO,      KC_NO,      KC_NO,      GR_PI,      GR_UPSL,    KC_NO,
-KC_NO,      GR_ALPH,    GR_OMCR,    GR_EPSL,    GR_THT,     GR_IOTA,
-KC_NO,      KC_NO,      KC_NO,      GR_XI,      GR_KAPP,    GR_CHI,     KC_NO,
-KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
-                                                            KC_NO,      KC_NO,
-                                                                        KC_NO,
-                                                KC_NO,      KC_NO,      KC_NO,
-KC_F24,     KC_F22,     KC_F14,     KC_F16,     KC_F18,     KC_F20,     KC_NO,
-KC_NO,      GR_PHI,     GR_GAMM,    GR_PSI,     GR_RHO,     GR_LMBD,    KC_NO,
-            GR_DLT,     GR_ETA,     GR_TAU,     GR_NU,      GR_SGM,     KC_NO,
-KC_NO,      GR_BETA,    GR_MU,      KC_NO,      GR_OMG,     GR_ZETA,    KC_NO,
-                        KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
 KC_NO,      KC_NO,
 KC_NO,
 KC_NO,      KC_NO,      KC_TRNS),
@@ -287,11 +199,6 @@ void matrix_scan_user (void) {
             break;
         case SYMB:
             ergodox_right_led_1_off ();
-            ergodox_right_led_2_on ();
-            ergodox_right_led_3_off ();
-            break;
-        case GRKL ... GRKU:
-            ergodox_right_led_1_on ();
             ergodox_right_led_2_on ();
             ergodox_right_led_3_off ();
             break;
