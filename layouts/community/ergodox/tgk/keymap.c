@@ -181,7 +181,6 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt) {
 };
 
 void matrix_init_user (void) {
-    set_unicode_input_mode (UC_LNX);
 };
 
 void matrix_scan_user (void) {
